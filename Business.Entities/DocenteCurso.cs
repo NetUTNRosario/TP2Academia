@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class DocenteCurso:BusinessEntities
+    class DocenteCurso:BusinessEntity
     {
         private TiposCargos _Cargo;
         public TiposCargos Cargo { set { _Cargo = value; } get { return _Cargo; } }

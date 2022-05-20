@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Comision:BusinessEntities
+    class Comision:BusinessEntity
     {
         private int _AnioEspecialidad;
         public int AnioEspecialidad { get { return _AnioEspecialidad; } set { _AnioEspecialidad = value; } }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class ModuloUsuario:BusinessEntities
+    class ModuloUsuario:BusinessEntity
     {
         private int _IDModulo;
         public int IDModulo { set { _IDModulo = value; } get { return _IDModulo; } }

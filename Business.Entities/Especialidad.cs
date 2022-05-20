@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Especialidad:BusinessEntities
+    class Especialidad:BusinessEntity
     {
         private string _Descripcion;
         public string Descripcion { set { _Descripcion = value; } get { return _Descripcion; } }

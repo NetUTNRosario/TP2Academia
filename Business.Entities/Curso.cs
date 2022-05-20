@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Curso:BusinessEntities
+    class Curso:BusinessEntity
     {
         private int _AnioCalendario;
         public int AnioCalendario { set { _AnioCalendario = value; } get { return _AnioCalendario; } }
