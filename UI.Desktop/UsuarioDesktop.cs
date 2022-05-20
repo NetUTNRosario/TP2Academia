@@ -58,22 +58,18 @@ namespace UI.Desktop
             switch (modo)
             {
                 case ModoForm.Alta:
-                    this.Text="Alta";
                     this.btnAceptar.Text = "Guardar";
                     break;
 
                 case ModoForm.Baja:
-                    this.Text = "Baja";
                     this.btnAceptar.Text = "Eliminar";
                     break;
 
                 case ModoForm.Modificacion:
-                    this.Text = "Modificación";
                     this.btnAceptar.Text = "Guardar";
                     break;
 
                 case ModoForm.Consulta:
-                    this.Text = "Consulta";
                     this.btnAceptar.Text = "Aceptar";
                     break;
 
