@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.Entities;
 using Data.Database;
-using Business.Entities;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
-    public class UsuarioLogic:BusinessLogic
+    public class UsuarioLogic : BusinessLogic
     {
         private UsuarioAdapter UsuarioData;
 
-        public UsuarioLogic() { 
-        UsuarioData = new UsuarioAdapter();
+        public UsuarioLogic()
+        {
+            UsuarioData = new UsuarioAdapter();
         }
 
-        public Usuario GetOne(int id) {
+        public Usuario GetOne(int id)
+        {
             return UsuarioData.GetOne(id);
         }
 
@@ -25,12 +23,13 @@ namespace Business.Logic
             return UsuarioData.GetAll();
         }
 
-        public void Delete (int id)
+        public void Delete(int id)
         {
             UsuarioData.Delete(id);
         }
 
-        public void Save (Usuario usuario) {
+        public void Save(Usuario usuario)
+        {
             UsuarioData.Save(usuario);
         }
     }

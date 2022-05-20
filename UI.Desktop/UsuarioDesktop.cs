@@ -1,8 +1,8 @@
 ﻿using Business.Entities;
 using Business.Logic;
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -29,7 +29,6 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-
         private new void MapearDeDatos()
         {
             if (modo == ModoForm.Alta)
@@ -46,8 +45,8 @@ namespace UI.Desktop
                 this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
                 this.txtClave.Text = this.UsuarioActual.Clave;
                 this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
-            } 
-            if(modo == ModoForm.Baja)
+            }
+            if (modo == ModoForm.Baja)
             {
                 this.txtClave.Hide();
                 this.lblClave.Hide();
@@ -110,16 +109,20 @@ namespace UI.Desktop
         {
             List<string> incorrectFields = new List<string>();
 
-            if (String.IsNullOrEmpty(this.txtID.Text.Trim())) {
+            if (String.IsNullOrEmpty(this.txtID.Text.Trim()))
+            {
                 incorrectFields.Add("ID");
             };
-            if (String.IsNullOrEmpty(this.txtNombre.Text.Trim())) {
+            if (String.IsNullOrEmpty(this.txtNombre.Text.Trim()))
+            {
                 incorrectFields.Add("Nombre");
             };
-            if (String.IsNullOrEmpty(this.txtApellido.Text.Trim())) {
+            if (String.IsNullOrEmpty(this.txtApellido.Text.Trim()))
+            {
                 incorrectFields.Add("Apellido");
             };
-            if (String.IsNullOrEmpty(this.txtUsuario.Text.Trim())) {
+            if (String.IsNullOrEmpty(this.txtUsuario.Text.Trim()))
+            {
                 incorrectFields.Add("Usuario");
             };
 
@@ -129,7 +132,7 @@ namespace UI.Desktop
             {
                 incorrectFields.Add("Clave y/o confirmación");
             }
-            
+
             bool validEmail = IsValidEmail(this.txtEmail.Text);
 
             if (!validEmail)
@@ -137,7 +140,7 @@ namespace UI.Desktop
                 incorrectFields.Add("Email");
             }
 
-            string toShow = String.Join(", ",incorrectFields.ToArray());
+            string toShow = String.Join(", ", incorrectFields.ToArray());
             if (!String.IsNullOrEmpty(toShow))
             {
                 this.Notificar("Error", $"Los campos {toShow} son incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,9 +148,8 @@ namespace UI.Desktop
             }
             else
             {
-            return true;
+                return true;
             }
-
         }
 
         private bool IsValidEmail(string email)
