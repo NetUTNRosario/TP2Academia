@@ -111,69 +111,83 @@ namespace UI.Desktop
 
         private new bool Validar()
         {
-            List<string> incorrectFields = new List<string>();
+            bool nombreVal = ValidarCampoVacio(txtNombre, erpNombre, "El nombre no puede estar vacio.");
+            bool apellidoVal = ValidarCampoVacio(txtApellido, erpApellido, "El apellido no puede estar vacio.");
+            bool usuarioVal = ValidarCampoVacio(txtUsuario, erpUsuario, "El usuario no puede estar vacio.");
 
-            if (String.IsNullOrEmpty(this.txtID.Text.Trim()))
-            {
-                incorrectFields.Add("ID");
-            };
-            if (String.IsNullOrEmpty(this.txtNombre.Text.Trim()))
-            {
-                incorrectFields.Add("Nombre");
-            };
-            if (String.IsNullOrEmpty(this.txtApellido.Text.Trim()))
-            {
-                incorrectFields.Add("Apellido");
-            };
-            if (String.IsNullOrEmpty(this.txtUsuario.Text.Trim()))
-            {
-                incorrectFields.Add("Usuario");
-            };
+            bool emailVal = ValidarEmail(txtEmail,erpEmail, "El email ingresado no es valido.");
 
-            bool claveOk = (this.txtClave.Text.Trim() == this.txtConfirmarClave.Text.Trim()) && this.txtClave.Text.Trim().Length >= 8;
+            bool claveVal = ValidarClave(txtClave, erpClave, "La clave no puede tener menos de 8 caracteres.");
 
-            if (!claveOk)
-            {
-                incorrectFields.Add("Clave y/o confirmación");
+            bool confirmacionClaveVal = ValidarConfirmacionClave(txtConfirmarClave, erpConfirmarClave, "La confirmación no coincide con la contraseña.");
+
+            bool isOK = nombreVal && apellidoVal && usuarioVal && emailVal && claveVal && confirmacionClaveVal;
+
+            if (!isOK) {
+                MessageBox.Show("Hay campos incorrectos, por favor verifique.","Campos incorrectos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+            return isOK;
+        }
 
-            bool validEmail = IsValidEmail(this.txtEmail.Text);
+        #region ValidacionesPersonalizadas
 
-            if (!validEmail)
+        private bool ValidarConfirmacionClave(TextBox txtActual, ErrorProvider erpActual, string mensajeError) {
+            if (txtActual.Text != txtClave.Text)
             {
-                incorrectFields.Add("Email");
-            }
-
-            string toShow = String.Join(", ", incorrectFields.ToArray());
-            if (!String.IsNullOrEmpty(toShow))
-            {
-                this.Notificar("Error", $"Los campos {toShow} son incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                erpActual.SetError(txtConfirmarClave, mensajeError);
                 return false;
             }
             else
             {
+                erpActual.Clear();
                 return true;
             }
         }
 
-        private bool IsValidEmail(string email)
+        private bool ValidarClave(TextBox txtActual, ErrorProvider erpActual, string mensajeError)
         {
-            var trimmedEmail = email.Trim();
-
-            if (trimmedEmail.EndsWith("."))
+            if (txtActual.Text.Trim().Length<8)
             {
+                erpActual.SetError(txtActual, mensajeError);
                 return false;
             }
-            try
+            else
             {
-                new System.Net.Mail.MailAddress(email);
+                erpActual.Clear();
                 return true;
             }
-            catch
+        }
+
+        private bool ValidarEmail(TextBox txtActual, ErrorProvider erpActual, string mensajeError){
+            if (!Validaciones.IsValidEmail(txtEmail.Text))
             {
+                erpEmail.SetError(txtEmail, mensajeError);
                 return false;
             }
+            else
+            {
+                erpEmail.Clear();
+                return true;
+            }
         }
+
+
+        private bool ValidarCampoVacio(TextBox txtActual,ErrorProvider erpActual, string mensajeError)
+        {
+            if (String.IsNullOrEmpty(txtActual.Text.Trim()))
+            {
+                erpActual.SetError(txtActual, mensajeError);
+                return false;
+            }
+            else
+            {
+                erpActual.Clear();
+                return true;
+            }
+        }
+        #endregion
+
+
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
