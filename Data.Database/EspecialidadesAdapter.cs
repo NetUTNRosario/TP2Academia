@@ -27,6 +27,13 @@ namespace Data.Database
                     esp.State = Business.Entities.BusinessEntity.States.Unmodified;
                     esp.Descripcion = "Ingenieria";
                     _Especialidades.Add(esp);
+
+                    esp = new Business.Entities.Especialidad();
+                    esp.ID = 2;
+                    esp.State = Business.Entities.BusinessEntity.States.Unmodified;
+                    esp.Descripcion = "Diseño Industrial";
+                    _Especialidades.Add(esp);
+
                 }
                 return _Especialidades;
             }
@@ -41,7 +48,7 @@ namespace Data.Database
 
         public Business.Entities.Especialidad GetOne(int ID)
         {
-            return Especialidades.Find(delegate (Especialidad u) { return u.ID == ID; });
+            return Especialidades.Find(delegate (Especialidad e) { return e.ID == ID; });
         }
 
         public void Delete(int ID)
