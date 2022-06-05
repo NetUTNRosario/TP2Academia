@@ -165,8 +165,8 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(941, 500);
             this.Controls.Add(this.tscEspecialidades);
             this.Name = "Especialidades";
-            this.Text = "Usuarios";
-            this.Load += new System.EventHandler(this.Usuarios_Load);
+            this.Text = "Especialidades";
+            this.Load += new System.EventHandler(this.Especialidades_Load);
             this.tscEspecialidades.ContentPanel.ResumeLayout(false);
             this.tscEspecialidades.TopToolStripPanel.ResumeLayout(false);
             this.tscEspecialidades.TopToolStripPanel.PerformLayout();
