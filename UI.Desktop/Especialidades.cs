@@ -49,7 +49,7 @@ namespace UI.Desktop
             this.dgvEspecialidades.Columns.Add(newColumn);
         }
 
-        private void Usuarios_Load(object sender, EventArgs e)
+        private void Especialidades_Load(object sender, EventArgs e)
         {
             Listar();
         }
@@ -66,26 +66,26 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop usuarioDesk = new UsuarioDesktop( ApplicationForm.ModoForm.Alta);
-            usuarioDesk.ShowDialog();
+            EspecialidadDesktop especialidadDesktop= new EspecialidadDesktop( ApplicationForm.ModoForm.Alta);
+            especialidadDesktop.ShowDialog();
             this.Listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Usuario)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+            int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
 
-            UsuarioDesktop usuarioDesk = new UsuarioDesktop(ID,ApplicationForm.ModoForm.Baja);
-            usuarioDesk.ShowDialog();
+            EspecialidadDesktop especialidadDesktop = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Baja);
+            especialidadDesktop.ShowDialog();
             this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Usuario)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+            int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
 
-            UsuarioDesktop usuarioDesk = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
-            usuarioDesk.ShowDialog();
+            EspecialidadDesktop especialidadDesktop = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            especialidadDesktop.ShowDialog();
             this.Listar();
         }
     }
