@@ -41,6 +41,6 @@ namespace Business.Entities
         { set { _TipoPersona = value; } get { return _TipoPersona; } }
 
         public enum TipoPersonas
-        { }
+        { Administrativo, Docente, Estudiante }
     }
 }
