@@ -15,6 +15,6 @@
         { set { _IDDocente = value; } get { return _IDDocente; } }
 
         public enum TiposCargos
-        { }
+        { Ayudante, JTP, Profesor_Adjunto, Profesor_Titular }
     }
 }
