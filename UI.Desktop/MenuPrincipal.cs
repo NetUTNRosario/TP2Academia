@@ -5,9 +5,9 @@ namespace UI.Desktop
 {
     public partial class MenuPrincipal : Form
     {
-        Business.Entities.Usuario _usuarioLogueado;
+        static private Business.Entities.Usuario _usuarioLogueado;
 
-        public Business.Entities.Usuario usuarioLogueado {
+        static public Business.Entities.Usuario usuarioLogueado {
             get { return _usuarioLogueado; }
             set { _usuarioLogueado = value; }
         }
@@ -16,32 +16,40 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        public MenuPrincipal(Business.Entities.Usuario usuarioActual) : this()
+
+
+        private void MenuPrincipal_Shown(object sender, EventArgs e)
         {
-            usuarioLogueado = usuarioActual;
+            if(new InicioSesion().ShowDialog()!= DialogResult.OK)
+            {
+                this.Dispose();
+            }
         }
 
-        private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Especialidades().Show();
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Usuarios().Show();
-        }
-
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //new Logueo().Show();
-            this.Close();
-        }
-
-        private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void modificarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: Inicio de sesion que inicialice usuarioLogueado
             UsuarioDesktop usuarioDesk = new UsuarioDesktop(usuarioLogueado.ID, ApplicationForm.ModoForm.Modificacion);
             usuarioDesk.ShowDialog();
+        }
+
+        private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+            if (new InicioSesion().ShowDialog() != DialogResult.OK)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new Usuarios().Show();
+        }
+
+        private void especialidadesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new Especialidades().Show();
         }
     }
 }
