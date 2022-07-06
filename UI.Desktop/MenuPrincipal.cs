@@ -51,5 +51,10 @@ namespace UI.Desktop
         {
             new Especialidades().Show();
         }
+
+        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Modulos().Show();
+        }
     }
 }
