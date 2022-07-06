@@ -53,6 +53,18 @@
     <Compile Include="ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulosDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModulosDesktop.Designer.cs">
+      <DependentUpon>ModulosDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos.Designer.cs">
+      <DependentUpon>Modulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="EspecialidadesDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ModulosDesktop.resx">
+      <DependentUpon>ModulosDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos.resx">
+      <DependentUpon>Modulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EspecialidadesDesktop.resx">
       <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
     </EmbeddedResource>
