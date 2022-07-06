@@ -97,15 +97,16 @@ namespace UI.Desktop
 
             bool isOK = descripcionVal;
 
-            if (!isOK) {
-                MessageBox.Show("Hay campos incorrectos, por favor verifique.","Campos incorrectos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            if (!isOK)
+            {
+                MessageBox.Show("Hay campos incorrectos, por favor verifique.", "Campos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return isOK;
         }
 
         #region ValidacionesPersonalizadas
 
-        private bool ValidarCampoVacio(TextBox txtActual,ErrorProvider erpActual, string mensajeError)
+        private bool ValidarCampoVacio(TextBox txtActual, ErrorProvider erpActual, string mensajeError)
         {
             if (String.IsNullOrEmpty(txtActual.Text.Trim()))
             {

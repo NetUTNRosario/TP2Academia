@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business.Entities;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    public class ModuloAdapter:Adapter
+    public class ModuloAdapter : Adapter
     {
         public List<Modulo> GetAll()
         {
@@ -37,7 +37,8 @@ namespace Data.Database
             {
                 throw new Exception("Error al recuperar Modulo.", ex);
             }
-            finally {
+            finally
+            {
                 this.CloseConnection();
             }
         }
@@ -56,7 +57,7 @@ namespace Data.Database
 
                 if (drModulo.Read())
                 {
-                    moduloActual.ID =(int)drModulo["id_modulo"];
+                    moduloActual.ID = (int)drModulo["id_modulo"];
                     moduloActual.Descripcion = (string)drModulo["desc_modulo"];
                 }
                 drModulo.Close();
@@ -65,7 +66,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al recuperar el modulo.",ex);
+                throw new Exception("Error al recuperar el modulo.", ex);
             }
             finally
             {
@@ -84,7 +85,7 @@ namespace Data.Database
 
                 cmdDelete.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error al eliminar el modulo.", ex);
             }
@@ -94,7 +95,7 @@ namespace Data.Database
             }
         }
 
-        public void Update(Modulo moduloActual) 
+        public void Update(Modulo moduloActual)
         {
             try
             {
@@ -115,7 +116,7 @@ namespace Data.Database
             }
         }
 
-        public void Insert(Modulo moduloActual) 
+        public void Insert(Modulo moduloActual)
         {
             try
             {
@@ -124,7 +125,7 @@ namespace Data.Database
                 SqlCommand cmdInsert = new SqlCommand("Insert into modulos(desc_modulo)" +
                         "values(@descripcion)" + "select @@identity", sqlConn);
                 cmdInsert.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = moduloActual.Descripcion;
-            
+
                 moduloActual.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception ex)

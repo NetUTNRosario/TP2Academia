@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Adapter.cs" />
     <Compile Include="ModuloAdapter.cs" />
-    <Compile Include="EspecialidadesAdapter.cs" />
+    <Compile Include="EspecialidadAdapter.cs" />
     <Compile Include="UsuarioAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

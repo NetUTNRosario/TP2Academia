@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Entities;
+using Business.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Entities;
-using Business.Logic;
 
 
 namespace UI.Desktop
@@ -39,7 +39,7 @@ namespace UI.Desktop
             this.dgvModulos.DataSource = el.GetAll();
         }
 
-        private void AddTextColumn (string name, string headerText, string dataPropertyName)
+        private void AddTextColumn(string name, string headerText, string dataPropertyName)
         {
             DataGridViewTextBoxColumn newColumn = new DataGridViewTextBoxColumn();
             newColumn.Name = name;
@@ -66,7 +66,7 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            ModuloDesktop especialidadDesktop= new ModuloDesktop( ApplicationForm.ModoForm.Alta);
+            ModuloDesktop especialidadDesktop = new ModuloDesktop(ApplicationForm.ModoForm.Alta);
             especialidadDesktop.ShowDialog();
             this.Listar();
         }
@@ -75,7 +75,7 @@ namespace UI.Desktop
         {
             int ID = ((Business.Entities.Modulo)this.dgvModulos.SelectedRows[0].DataBoundItem).ID;
 
-            ModuloDesktop especialidadDesktop = new ModuloDesktop(ID,ApplicationForm.ModoForm.Baja);
+            ModuloDesktop especialidadDesktop = new ModuloDesktop(ID, ApplicationForm.ModoForm.Baja);
             especialidadDesktop.ShowDialog();
             this.Listar();
         }

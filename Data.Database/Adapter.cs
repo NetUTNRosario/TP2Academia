@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Text;
 
 namespace Data.Database
 {
@@ -14,12 +14,12 @@ namespace Data.Database
 
         private SqlConnection _sqlConn;
 
-        public SqlConnection sqlConn { get { return _sqlConn; } set { _sqlConn = value; }}
+        public SqlConnection sqlConn { get { return _sqlConn; } set { _sqlConn = value; } }
 
         protected void OpenConnection()
         {
             string connStrig = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
-            sqlConn= new SqlConnection(connStrig);
+            sqlConn = new SqlConnection(connStrig);
             sqlConn.Open();
         }
 
