@@ -94,7 +94,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdDelete = new SqlCommand("DELETE modulosUsuarios from modulos_usuarios WHERE id_modulo_usuario=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("DELETE modulos_usuarios FROM modulos_usuarios WHERE id_modulo_usuario = @id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
 
                 cmdDelete.ExecuteNonQuery();
