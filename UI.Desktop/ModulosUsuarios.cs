@@ -97,7 +97,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Modulo)this.dgvModulosUsuarios.SelectedRows[0].DataBoundItem).ID;
+            int ID = ((Business.Entities.ModuloUsuario)this.dgvModulosUsuarios.SelectedRows[0].DataBoundItem).ID;
 
             ModuloUsuarioDesktop moduloUsuarioDesktop = new ModuloUsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             moduloUsuarioDesktop.ShowDialog();

@@ -44,10 +44,10 @@ namespace UI.Desktop
                 this.cmbIdModulo.SelectedItem = this.ModuloUsuarioActual.IDModulo;
                 this.cmbIdUsuario.SelectedItem = this.ModuloUsuarioActual.IDUsuario;
 
-                this.chkConsulta.Enabled = this.ModuloUsuarioActual.PermiteConsulta;
-                this.chkBaja.Enabled = this.ModuloUsuarioActual.PermiteBaja;
-                this.chkModificacion.Enabled = this.ModuloUsuarioActual.PermiteModificacion;
-                this.chkConsulta.Enabled = this.ModuloUsuarioActual.PermiteConsulta;                
+                this.chkAlta.Checked = this.ModuloUsuarioActual.PermiteAlta;
+                this.chkBaja.Checked = this.ModuloUsuarioActual.PermiteBaja;
+                this.chkModificacion.Checked = this.ModuloUsuarioActual.PermiteModificacion;
+                this.chkConsulta.Checked = this.ModuloUsuarioActual.PermiteConsulta;                
             }
 
             this.cmbIdModulo.DisplayMember = "Descripcion";
@@ -72,7 +72,7 @@ namespace UI.Desktop
 
                     this.cmbIdModulo.Enabled = false;
                     this.cmbIdUsuario.Enabled = false;
-                    this.chkConsulta.Enabled = false;
+                    this.chkAlta.Enabled = false;
                     this.chkBaja.Enabled = false;
                     this.chkModificacion.Enabled = false;
                     this.chkConsulta.Enabled = false;
@@ -95,9 +95,12 @@ namespace UI.Desktop
 
         private new void MapearADatos()
         {
-            this.ModuloUsuarioActual = new ModuloUsuario();
+            if(this.modo == ModoForm.Alta)
+            {
+                this.ModuloUsuarioActual = new ModuloUsuario();
+            }
 
-            this.ModuloUsuarioActual.IDModulo = (int)(this.cmbIdModulo.SelectedValue);
+            this.ModuloUsuarioActual.IDModulo = (int)this.cmbIdModulo.SelectedValue;
             this.ModuloUsuarioActual.IDUsuario = (int)this.cmbIdUsuario.SelectedValue;
 
             this.ModuloUsuarioActual.PermiteAlta = this.chkAlta.Checked;
@@ -117,10 +120,7 @@ namespace UI.Desktop
 
         private new bool Validar()
         {
-            //bool descripcionVal = ValidarCampoVacio(txtDescripcion, erpDescripcion, "La descripcion no puede estar vacia.");
-
-            //bool isOK = descripcionVal;
-            bool isOK = true;
+            bool isOK = true; 
 
             if (!isOK)
             {
